@@ -9,7 +9,6 @@ import ru.practicum.model.ViewStatsDto;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Repository
 public interface HitRepository extends JpaRepository<EndpointHit, Long> {
     @Query(" SELECT new ru.practicum.model.ViewStatsDto(eph.app, eph.uri, COUNT(eph.ip)) " +
             "FROM EndpointHit eph WHERE eph.timestamp BETWEEN ?1 AND ?2 " +
