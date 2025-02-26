@@ -3,6 +3,7 @@ package ru.practicum.events.service;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.category.model.Category;
 import ru.practicum.category.repository.CategoryRepository;
 import ru.practicum.client.StatsClient;
@@ -86,6 +87,7 @@ public class AdminEventServiceImpl extends EventBase implements AdminEventServic
     }
 
     @Override
+    @Transactional
     public EventDto updateEvent(Long eventId, EventUpdateAdmin eventUpdateAdmin) {
         Event event = eventRepository.findById(eventId)
                 .orElseThrow(() -> new NotFoundException("Событие с id: " + eventId + " не найдено."));

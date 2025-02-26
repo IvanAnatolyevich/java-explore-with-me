@@ -40,10 +40,10 @@ public class PublicEventController {
             @RequestParam(required = false) Boolean paid,
             @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime rangeStart,
             @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime rangeEnd,
-            @RequestParam(value = "onlyAvailable", defaultValue = "false", required = false) Boolean onlyAvailable,
+            @RequestParam(value = "onlyAvailable", defaultValue = "false") Boolean onlyAvailable,
             @RequestParam(required = false) EventSort sort,
-            @RequestParam(value = "from", defaultValue = "0", required = false) Integer from,
-            @RequestParam(value = "size", defaultValue = "10", required = false) Integer size,
+            @RequestParam(value = "from", defaultValue = "0") Integer from,
+            @RequestParam(value = "size", defaultValue = "10") Integer size,
             HttpServletRequest request) {
         log.info("Получение событий");
         if (rangeStart != null && rangeEnd != null && rangeStart.isAfter(rangeEnd)) {
