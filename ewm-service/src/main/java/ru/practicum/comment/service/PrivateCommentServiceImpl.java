@@ -2,6 +2,7 @@ package ru.practicum.comment.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.comment.dto.CommentInputDto;
 import ru.practicum.comment.dto.UserCommentOutputDto;
 import ru.practicum.comment.dto.UserUpdateCommentInputDto;
@@ -27,6 +28,7 @@ public class PrivateCommentServiceImpl implements PrivateCommentService {
     private final UserRepository userRepository;
 
     @Override
+    @Transactional
     public UserCommentOutputDto userAddComment(CommentInputDto commentInputDto, Long authorId) {
         User author = checkUser(authorId);
         Long eventId = commentInputDto.getEventId();
@@ -39,6 +41,7 @@ public class PrivateCommentServiceImpl implements PrivateCommentService {
     }
 
     @Override
+    @Transactional
     public UserCommentOutputDto userUpdateComment(UserUpdateCommentInputDto userUpdateCommentInputDto, Long authorId,
                                                   Long commentId) {
         checkUser(authorId);
@@ -58,6 +61,7 @@ public class PrivateCommentServiceImpl implements PrivateCommentService {
     }
 
     @Override
+    @Transactional
     public void userDeleteComment(Long authorId, Long commentId) {
         checkUser(authorId);
         Comment comment = checkComment(commentId);

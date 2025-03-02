@@ -3,6 +3,7 @@ package ru.practicum.comment.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.base.model.State;
 import ru.practicum.comment.dto.AdminCommentOutputDto;
 import ru.practicum.comment.dto.AdminStatusUpdateCommentInputDto;
@@ -23,6 +24,7 @@ public class AdminCommentServiceImpl implements AdminCommentService {
     private final UserRepository userRepository;
 
     @Override
+    @Transactional
     public void adminDeleteComment(Long commentId) {
         commentRepository.findById(commentId)
                 .orElseThrow(() -> new NotFoundException("Комментарий с id: " + commentId + " не найден."));
@@ -30,6 +32,7 @@ public class AdminCommentServiceImpl implements AdminCommentService {
     }
 
     @Override
+    @Transactional
     public AdminCommentOutputDto adminUpdateCommentStatus(Long commentId,
                                                           AdminStatusUpdateCommentInputDto adminStatusUpdateCommentInputDto) {
         Comment comment = commentRepository.findById(commentId)

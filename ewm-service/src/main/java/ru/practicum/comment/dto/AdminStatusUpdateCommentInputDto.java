@@ -9,5 +9,5 @@ import ru.practicum.base.model.State;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AdminStatusUpdateCommentInputDto {
-    State state;
+    private State state;
 }

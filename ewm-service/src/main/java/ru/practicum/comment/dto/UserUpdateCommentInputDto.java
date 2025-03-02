@@ -4,5 +4,5 @@ import lombok.Data;
 
 @Data
 public class UserUpdateCommentInputDto {
-    String text;
+    private String text;
 }
